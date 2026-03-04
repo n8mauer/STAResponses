@@ -20,4 +20,10 @@ What ties all of this together is how I think about architecture: modular bounda
 
 I'm comfortable at every layer — PyTorch model internals, cloud infrastructure provisioning, API design, frontend delivery — and I'm effective at translating between them for technical and non-technical stakeholders alike. That's the value I'd bring to BCG Platinion's clients: an architect who can walk into a room with a CTO, understand the business problem, design the AI platform strategy, and then validate it with working code. These four projects span the core segments of a $150B+ enterprise AI platform market — legacy modernization, model governance, AI-integrated applications, and retrieval-augmented knowledge systems — and each one is built to production standards because that's what clients pay for.
 
-The enterprise AI platform market crosses $150B by 2027 at analyst consensus growth rates, and my four projects map to the four highest-growth segments within it — legacy modernization at 18% CAGR, AI governance at 40%+ CAGR, RAG at 45%+ CAGR, and AI application integration which grew 3.2x year-over-year in 2025."
+The enterprise AI platform market crosses $150B by 2027 at analyst consensus growth rates, and my four projects map to the four highest-growth segments within it — legacy modernization at 18% CAGR, AI governance at 40%+ CAGR, RAG at 45%+ CAGR, and AI application integration which grew 3.2x year-over-year in 2025.
+
+partial cache hit ambiguity under multi-agent interleaving. the pressure creates unpredictable latency variance across turns.
+
+File system abstraction Over-engineered for a single-purpose study assistant. You don’t need to mount ChromaDB as a FUSE filesystem
+
+POSIX semantics - Portable Operating System Interface: It behaves like a normal Unix filesystem and obeys the expected rules of file operations.
