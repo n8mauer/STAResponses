@@ -21,6 +21,7 @@
 | 12 | AI-Powered Legacy Modernization Platform | HiddenSignalTest | Enterprise AI / Modernization |
 | 13 | Serverless AI Architecture on AWS | HiddenSignalTest | AWS / Serverless / Cost |
 | 14 | Technical Communication & Stakeholder Enablement | HiddenSignalTest | Communication / Thought Leadership |
+| 15 | API Design Across Paradigms | Cross-repo | API Design / Integration |
 
 ---
 
@@ -119,6 +120,19 @@
 | Attention analysis | residualstreambackdoor | Divergence scoring for trigger detection |
 | PCA separability diagnostics | residualstreambackdoor | Silhouette scores on activation space |
 | Weight forensics | residualstreambackdoor | Shard-by-shard model comparison |
+
+---
+
+## API Design Patterns
+
+| Paradigm | Repo | Key Files | Description |
+|----------|------|-----------|-------------|
+| **REST + SSE Streaming** | cookbook-club | `server/routes.ts`, `server/middleware/`, `shared/schema.ts` | 124+ endpoints, Zod validation, dual auth (session + JWT), Helmet.js CSP, presigned S3 URLs, SSE for OpenAI streaming, global error handler |
+| **Async REST + WebSocket Event Bus** | studyassistant | `src/api/`, `src/api/websocket.py`, `frontend/src/types/index.ts` | FastAPI with auto-generated OpenAPI, Pydantic models, 9 typed WebSocket events (`WSEventTypes`), contract-first shared dataclasses + TypeScript interfaces |
+| **Event-Driven + Approval Protocol** | residualstreambackdoor | `src/orchestrator.py`, `src/notifications.py`, `infrastructure/cloudformation.yaml` | SNS pub-sub (6 notification methods), SSM Parameter Store approval gate with timeout auto-continue, 8-phase idempotent state machine, graceful degradation |
+| **Serverless Lambda + Multi-Provider** | HiddenSignalTest | `lambda/app.py`, `template.yaml`, `terraform/` | API Gateway with SAM-defined CORS/tracing, `validate_request()` with field-level bounds checking, dual backend (SageMaker + HuggingFace), environment-based staging |
+
+**Cross-cutting principles:** Contract-first design (Zod, Pydantic, SAM templates) · Validation at the boundary · Structured error propagation · Auth strategy per context (session, JWT, IAM, Bearer token, SSM) · Real-time patterns (SSE, WebSocket, SNS)
 
 ---
 

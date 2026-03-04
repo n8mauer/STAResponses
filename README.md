@@ -38,6 +38,7 @@ CI/CD enforced via GitHub Actions (6-job parallel pipeline: ruff, mypy strict, b
 | Cloud architecture (AWS) | 17 services across 3 repos, Terraform + CloudFormation IaC, GPU autoscaling, cost optimization |
 | MLOps / LLMOps | CI/CD pipelines, probe reliability scoring, training orchestration, observability dashboards |
 | Vector DBs & embeddings | ChromaDB, sentence-transformers, PCA activation analysis |
+| API design & integration | REST, WebSocket, SSE, event-driven, serverless Lambda — 4 paradigms across 4 repos |
 | Full-stack delivery | Production React + TypeScript apps, dual auth, real-time WebSocket, mobile |
 | Technical communication | 400KB+ documentation, LaTeX paper, demo guides with talk tracks, architecture decision records |
 | Business value | 1000x cost reduction (HiddenSignalTest), live production platform (cookbook-club), <4s latency (studyassistant) |
