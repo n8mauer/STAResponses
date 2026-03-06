@@ -27,3 +27,5 @@ partial cache hit ambiguity under multi-agent interleaving. the pressure creates
 File system abstraction Over-engineered for a single-purpose study assistant. You don’t need to mount ChromaDB as a FUSE filesystem
 
 POSIX semantics - Portable Operating System Interface: It behaves like a normal Unix filesystem and obeys the expected rules of file operations.
+
+A Dependency-Aware Directed Acyclic Graph (DAG) is a way to model tasks, data flows, or computations where each step depends on outputs from earlier steps, and where no cycles (loops) are allowed. It’s widely used in data pipelines, distributed systems, AI orchestration, build systems, and workflow engines.
