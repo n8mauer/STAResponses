@@ -371,71 +371,55 @@ products demand.
 ---
 Summary: JD Requirement Coverage Matrix
 
-┌──────────────────────────┬─────────────────────────────────────┐
-│     JD Requirement       │          Repo Evidence              │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Complex agentic systems  │ 4 PPO agents with adversarial       │
-│                          │ hardening, solver loop coordination  │
-│                          │ (residualstreambackdoor); 8-agent    │
-│                          │ framework (studyassistant)           │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Agent harness design     │ Cross-strategy data flow, convergence│
-│ (memory, context         │ detection, idempotent state machine  │
-│ compression, comms)      │ (residualstreambackdoor); context    │
-│                          │ budgeting, WebSocket events          │
-│                          │ (studyassistant); response caching   │
-│                          │ (cookbook-club)                       │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Quantitative benchmarks  │ Probe reliability scoring, ~70%      │
-│ for agentic tasks        │ accuracy, PCA separability           │
-│                          │ (residualstreambackdoor); 84/100     │
-│                          │ output quality (HiddenSignalTest)    │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Automated model/prompt   │ 500+ decoding configs with TF-IDF    │
-│ evaluation               │ clustering (residualstreambackdoor); │
-│                          │ confidence scoring, uncertainty      │
-│                          │ flagging (studyassistant); batch     │
-│                          │ evaluation tools (HiddenSignalTest)  │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Data mixes for model     │ 4,323-line generator, 8 weighted     │
-│ training                 │ categories, SHA-256 dedup            │
-│                          │ (HiddenSignalTest); adversarial      │
-│                          │ training data (residualstreambackdoor│
-│                          │)                                     │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Large-scale RL on        │ 4 PPO agents in PyTorch:             │
-│ language models          │ PPOSolverAgent, PPOTriggerDiscovery, │
-│                          │ PPOAdversary, PPOMonitoringPolicy    │
-│                          │ (residualstreambackdoor)             │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Multi-agent systems      │ 4 PPO agents with solver loop        │
-│                          │ (residualstreambackdoor); 8-agent    │
-│                          │ dev framework with dependency graph  │
-│                          │ (studyassistant)                     │
-├──────────────────────────┼─────────────────────────────────────┤
-│ LLM finetuning           │ QLoRA on CodeLlama-7B: 4-bit NF4,   │
-│                          │ LoRA r=64/a=16, SFTTrainer           │
-│                          │ (HiddenSignalTest)                   │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Prompting / building     │ 7 GPT-4o features in production      │
-│ products with LLMs       │ (cookbook-club); Claude API with      │
-│                          │ structured prompts (studyassistant); │
-│                          │ 500+ decoding configs                │
-│                          │ (residualstreambackdoor)             │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Software engineering     │ 10,400+ lines, 205 tests, strict     │
-│ and ML experience        │ mypy, 6-job CI/CD                    │
-│                          │ (residualstreambackdoor); production │
-│                          │ TypeScript monolith, 124+ endpoints  │
-│                          │ (cookbook-club)                       │
-├──────────────────────────┼─────────────────────────────────────┤
-│ Model internals /        │ Residual stream probing, CCS, PCA,   │
-│ interpretability         │ attention divergence, weight          │
-│                          │ forensics on 671B model              │
-│                          │ (residualstreambackdoor)             │
-├──────────────────────────┼─────────────────────────────────────┤
-│ AI safety / beneficial   │ Backdoor detection for model         │
-│ technology               │ governance (residualstreambackdoor); │
-│                          │ uncertainty flagging, confidence     │
-│                          │ scoring (studyassistant)             │
-└──────────────────────────┴─────────────────────────────────────┘
+┌─────────────────────────────┬──────────────────────────────────────────────────────┐
+│       JD Requirement        │                    Repo Evidence                     │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Complex agentic systems     │ 4 PPO agents with adversarial hardening, solver      │
+│                             │ loop coordination (residualstreambackdoor);          │
+│                             │ 8-agent framework (studyassistant)                   │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Agent harness design        │ Cross-strategy data flow, convergence detection,     │
+│ (memory, context            │ idempotent state machine (residualstreambackdoor);   │
+│ compression, comms)         │ context budgeting, WebSocket events (studyassistant);│
+│                             │ response caching (cookbook-club)                      │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Quantitative benchmarks     │ Probe reliability scoring, ~70% accuracy, PCA       │
+│ for agentic tasks           │ separability (residualstreambackdoor);               │
+│                             │ 84/100 output quality (HiddenSignalTest)             │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Automated model/prompt      │ 500+ decoding configs with TF-IDF clustering        │
+│ evaluation                  │ (residualstreambackdoor); confidence scoring,        │
+│                             │ uncertainty flagging (studyassistant);               │
+│                             │ batch evaluation tools (HiddenSignalTest)            │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Data mixes for model        │ 4,323-line generator, 8 weighted categories,        │
+│ training                    │ SHA-256 dedup (HiddenSignalTest); adversarial        │
+│                             │ training data (residualstreambackdoor)               │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Large-scale RL on           │ 4 PPO agents in PyTorch: PPOSolverAgent,            │
+│ language models             │ PPOTriggerDiscovery, PPOAdversary,                   │
+│                             │ PPOMonitoringPolicy (residualstreambackdoor)         │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Multi-agent systems         │ 4 PPO agents with solver loop                       │
+│                             │ (residualstreambackdoor); 8-agent dev framework     │
+│                             │ with dependency graph (studyassistant)               │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ LLM finetuning              │ QLoRA on CodeLlama-7B: 4-bit NF4, LoRA r=64/a=16,  │
+│                             │ SFTTrainer (HiddenSignalTest)                        │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Prompting / building        │ 7 GPT-4o features in production (cookbook-club);     │
+│ products with LLMs          │ Claude API with structured prompts (studyassistant); │
+│                             │ 500+ decoding configs (residualstreambackdoor)       │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Software engineering        │ 10,400+ lines, 205 tests, strict mypy, 6-job CI/CD  │
+│ and ML experience           │ (residualstreambackdoor); production TypeScript      │
+│                             │ monolith, 124+ endpoints (cookbook-club)              │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ Model internals /           │ Residual stream probing, CCS, PCA, attention         │
+│ interpretability            │ divergence, weight forensics on 671B model           │
+│                             │ (residualstreambackdoor)                             │
+├─────────────────────────────┼──────────────────────────────────────────────────────┤
+│ AI safety / beneficial      │ Backdoor detection for model governance              │
+│ technology                  │ (residualstreambackdoor); uncertainty flagging,      │
+│                             │ confidence scoring (studyassistant)                  │
+└─────────────────────────────┴──────────────────────────────────────────────────────┘
