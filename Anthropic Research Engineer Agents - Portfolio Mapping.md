@@ -3,22 +3,22 @@
 
 ---
 
-Four repositories demonstrate direct coverage of the Research Engineer, Agents competency model. The work spans multi-agent RL systems, LLM finetuning with synthetic data generation, production agent orchestration, model interpretability at 671B-parameter scale, and prompt-driven inference pipelines — implemented in Python and TypeScript with PyTorch, HuggingFace, scikit-learn, and 17 AWS services.
+Six repositories demonstrate direct coverage of the Research Engineer, Agents competency model. The work spans multi-agent RL systems, LLM finetuning with synthetic data generation, production agent orchestration, model interpretability at 671B-parameter scale, prompt-driven inference pipelines, adversarial game-playing agents with partial observability, and quantitative market simulation — implemented in Python and TypeScript with PyTorch, HuggingFace, scikit-learn, and 17 AWS services.
 
 ### Alignment to Role
 
 | JD Requirement | Evidence |
 |---|---|
-| Complex agentic systems using LLMs | 4 PPO agents with adversarial hardening cycles (residualstreambackdoor), 8-agent dev framework with dependency graph and contract-driven interfaces (studyassistant) |
-| Agent harness design (memory, context compression, communication) | Solver loop with cross-strategy data flow and convergence detection (residualstreambackdoor), RAG pipeline with context-budgeted prompt assembly and 2000-token context windows (studyassistant), SHA-256 hash-keyed response caching as agent memory (cookbook-club) |
-| Rigorous quantitative benchmarks | Probe reliability scoring (sample size, train-test gap, layer position, PCA separability), ~70% accuracy on 8B warmup model (residualstreambackdoor), 84/100 output quality with 85-90% business logic accuracy (HiddenSignalTest) |
-| Automated evaluation of models and prompts | Structured output validation with confidence scoring and uncertainty flagging (studyassistant), probe accuracy benchmarks across all transformer layers (residualstreambackdoor), model quality harness with batch evaluation tools (HiddenSignalTest) |
+| Complex agentic systems using LLMs | 4 PPO agents with adversarial hardening cycles (residualstreambackdoor), 8-agent dev framework with dependency graph and contract-driven interfaces (studyassistant), game-playing agents with minimax/alpha-beta across 5 variants including 3-player adversarial search (tic-tac-toeandconnectfour) |
+| Agent harness design (memory, context compression, communication) | Solver loop with cross-strategy data flow and convergence detection (residualstreambackdoor), RAG pipeline with context-budgeted prompt assembly and 2000-token context windows (studyassistant), SHA-256 hash-keyed response caching as agent memory (cookbook-club), polymorphic agent dispatch across game types with heuristic evaluation (tic-tac-toeandconnectfour) |
+| Rigorous quantitative benchmarks | Probe reliability scoring (sample size, train-test gap, layer position, PCA separability), ~70% accuracy on 8B warmup model (residualstreambackdoor), 84/100 output quality with 85-90% business logic accuracy (HiddenSignalTest), portfolio simulation with Sharpe ratio, cumulative return, and daily return metrics benchmarked against SPY (Marketsim) |
+| Automated evaluation of models and prompts | Structured output validation with confidence scoring and uncertainty flagging (studyassistant), probe accuracy benchmarks across all transformer layers (residualstreambackdoor), model quality harness with batch evaluation tools (HiddenSignalTest), pytest-parametrized grading framework with 12 test cases and 0.1% tolerance assertions (Marketsim) |
 | Data mixes for model training | 4,323-line synthetic dataset generator with 8 weighted business-logic categories, configurable train/val splits, SHA-256 deduplication (HiddenSignalTest) |
 | Large-scale RL on language models | 4 PPO agents: PPOSolverAgent (35-dim, 1600 actions), PPOTriggerDiscoveryAgent (128-dim, 3000 actions), PPOAdversaryAgent (64-dim), PPOMonitoringPolicy — with adversarial hardening cycles and early exit at >95% accuracy (residualstreambackdoor) |
-| Multi-agent systems | 4 coordinated PPO agents with solver loop orchestration (residualstreambackdoor), 8-agent development framework with dependency ordering and interface contracts (studyassistant) |
+| Multi-agent systems | 4 coordinated PPO agents with solver loop orchestration (residualstreambackdoor), 8-agent development framework with dependency ordering and interface contracts (studyassistant), 3-player adversarial game search with partial observability (tic-tac-toeandconnectfour) |
 | Finetuning for agent tool use | QLoRA on CodeLlama-7B: 4-bit NF4, LoRA r=64/α=16, SFTTrainer, paged_adamw_32bit, targeting all attention+FFN projections (HiddenSignalTest) |
 | Prompting and building products with LLMs | 7 production GPT-4o features with response caching (cookbook-club), structured Claude API prompts with evidence citation (studyassistant), 500+ decoding configurations for memory extraction (residualstreambackdoor) |
-| Software engineering and ML experience | 10,400+ lines Python with strict mypy, 205 tests, 6-job CI/CD (residualstreambackdoor), production TypeScript monolith with 124+ endpoints (cookbook-club) |
+| Software engineering and ML experience | 10,400+ lines Python with strict mypy, 205 tests, 6-job CI/CD (residualstreambackdoor), production TypeScript monolith with 124+ endpoints (cookbook-club), automated grading framework with namedtuple test definitions and tolerance-based validation (Marketsim) |
 | Model internals and interpretability | Residual stream probing across all layers of 671B DeepSeek V3, per-layer linear probes, CCS unsupervised labeling, PCA diagnostics, attention divergence scoring, weight forensics (residualstreambackdoor) |
 
 ---
@@ -105,20 +105,20 @@ Maps to: *"Build the prompting and model orchestration for a production applicat
 
 ## JD Requirement → Repository Coverage Matrix
 
-| JD Requirement | residualstreambackdoor | HiddenSignalTest | studyassistant | cookbook-club |
-|---|:---:|:---:|:---:|:---:|
-| **Complex agentic systems** | 4 PPO agents, solver loop | Step Functions orchestration | 8-agent framework, 10-stage pipeline | 7 AI touchpoints |
-| **Agent harness design** | Cross-strategy data flow, convergence detection | Pipeline orchestration | Context budgeting, WebSocket communication | Response caching, fallback chains |
-| **Quantitative benchmarks** | Probe reliability scoring, ~70% accuracy | 84/100 quality, 85-90% accuracy | Latency budgets (<4s E2E) | — |
-| **Automated evaluation** | 500+ decoding configs, TF-IDF clustering | Batch evaluation tools | Confidence scoring, uncertainty flags | — |
-| **Data mixes for training** | Adversarial training data generation | 8-category synthetic data generator | — | — |
-| **Large-scale RL** | 4 PPO agents (PyTorch) | — | — | — |
-| **Multi-agent systems** | Solver loop coordination | — | 8-agent dependency graph | — |
-| **Finetuning** | — | QLoRA on CodeLlama-7B | — | — |
-| **Prompt engineering** | 500+ decoding configs | Instruction tuning templates | Structured prompt pipeline | 7 prompt strategies |
-| **Production LLM products** | — | Serverless inference platform | RAG-powered assistant | Live platform (cookbookclub.vip) |
-| **Model internals** | Residual stream probing, CCS, PCA, attention, weight forensics | — | — | — |
-| **Software engineering** | 10,400+ lines, 205 tests, strict mypy, CI/CD | Terraform + SAM IaC, Lambda | FastAPI async, typed contracts | 124+ endpoints, dual auth, Vitest |
+| JD Requirement | residualstreambackdoor | HiddenSignalTest | studyassistant | cookbook-club | tic-tac-toeandconnectfour | Marketsim |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Complex agentic systems** | 4 PPO agents, solver loop | Step Functions orchestration | 8-agent framework, 10-stage pipeline | 7 AI touchpoints | Minimax + alpha-beta agents, 5 game variants | — |
+| **Agent harness design** | Cross-strategy data flow, convergence detection | Pipeline orchestration | Context budgeting, WebSocket communication | Response caching, fallback chains | Polymorphic dispatch, heuristic evaluation | — |
+| **Quantitative benchmarks** | Probe reliability scoring, ~70% accuracy | 84/100 quality, 85-90% accuracy | Latency budgets (<4s E2E) | — | GameStats outcome tracking | Sharpe ratio, cumulative return, benchmarked vs SPY |
+| **Automated evaluation** | 500+ decoding configs, TF-IDF clustering | Batch evaluation tools | Confidence scoring, uncertainty flags | — | — | pytest-parametrized, 12 test cases, 0.1% tolerance |
+| **Data mixes for training** | Adversarial training data generation | 8-category synthetic data generator | — | — | — | — |
+| **Large-scale RL** | 4 PPO agents (PyTorch) | — | — | — | — | — |
+| **Multi-agent systems** | Solver loop coordination | — | 8-agent dependency graph | — | 3-player adversarial search, partial observability | — |
+| **Finetuning** | — | QLoRA on CodeLlama-7B | — | — | — | — |
+| **Prompt engineering** | 500+ decoding configs | Instruction tuning templates | Structured prompt pipeline | 7 prompt strategies | — | — |
+| **Production LLM products** | — | Serverless inference platform | RAG-powered assistant | Live platform (cookbookclub.vip) | — | — |
+| **Model internals** | Residual stream probing, CCS, PCA, attention, weight forensics | — | — | — | — | — |
+| **Software engineering** | 10,400+ lines, 205 tests, strict mypy, CI/CD | Terraform + SAM IaC, Lambda | FastAPI async, typed contracts | 124+ endpoints, dual auth, Vitest | Polymorphic agent framework, PRD-driven | Automated grading, namedtuple test defs |
 
 ---
 
@@ -128,10 +128,10 @@ The JD lists 6 representative projects. Here is how the portfolio maps:
 
 | JD Representative Project | Portfolio Match |
 |---|---|
-| *"Design and build a novel agent harness that outperforms existing agents on coding or knowledge work benchmarks"* | residualstreambackdoor's solver loop — a multi-strategy agent harness with 4 PPO agents, cross-strategy data flow, convergence detection, and adversarial hardening that iteratively improves agent performance |
+| *"Design and build a novel agent harness that outperforms existing agents on coding or knowledge work benchmarks"* | residualstreambackdoor's solver loop — a multi-strategy agent harness with 4 PPO agents, cross-strategy data flow, convergence detection, and adversarial hardening that iteratively improves agent performance; tic-tac-toeandconnectfour's polymorphic agent harness dispatching minimax vs alpha-beta search by game complexity |
 | *"Design and build agent affordances that unlock new capabilities for internal use and deployed products"* | studyassistant's 10-stage pipeline with WebSocket event bus — each pipeline stage is an agent affordance (capture, OCR, retrieval, generation) composed via typed contracts; cookbook-club's 7 production AI features as deployed agent capabilities |
-| *"Design and build a novel eval that measures how many agents interact in groups to solve problems"* | residualstreambackdoor's probe reliability scoring — quantitatively measures how 4 PPO agents and 3 detection strategies interact via the solver loop, with convergence detection determining when the group has solved the problem |
-| *"Build a scaled model evaluation framework driven by model-based evaluation techniques"* | residualstreambackdoor's automated eval over 500+ decoding configurations with TF-IDF + DBSCAN clustering, attention divergence scoring, and per-layer probe accuracy tracking across all transformer layers |
+| *"Design and build a novel eval that measures how many agents interact in groups to solve problems"* | residualstreambackdoor's probe reliability scoring — quantitatively measures how 4 PPO agents and 3 detection strategies interact via the solver loop, with convergence detection determining when the group has solved the problem; tic-tac-toeandconnectfour's 3-player adversarial search with GameStats tracking win/loss/timing across agent configurations |
+| *"Build a scaled model evaluation framework driven by model-based evaluation techniques"* | residualstreambackdoor's automated eval over 500+ decoding configurations with TF-IDF + DBSCAN clustering, attention divergence scoring, and per-layer probe accuracy tracking across all transformer layers; Marketsim's pytest-parametrized grading framework with 12 test cases, namedtuple definitions, and tolerance-based quantitative assertions |
 | *"Build the prompting and model orchestration for a production application backed by a language model"* | cookbook-club (7 GPT-4o features, live at cookbookclub.vip) and studyassistant (Claude API with structured prompts, confidence scoring, and evidence citation in a 10-stage pipeline) |
 | *"Finetune Claude to maximize its performance using a particular set of agent tools or harness"* | HiddenSignalTest's QLoRA finetuning of CodeLlama-7B with 4,323-line synthetic dataset generator across 8 weighted categories, achieving 84/100 output quality at 1000x cost reduction |
 
@@ -143,7 +143,7 @@ The JD lists 6 representative projects. Here is how the portfolio maps:
 |-------|-----------|
 | **Languages** | Python 3.11+ (strict mypy), TypeScript (full-stack), HCL (Terraform) |
 | **ML/AI** | PyTorch, scikit-learn, HuggingFace Transformers, PEFT, TRL, bitsandbytes |
-| **RL** | PPO (4 specialized agents), adversarial hardening cycles |
+| **RL / Search** | PPO (4 specialized agents), adversarial hardening cycles, minimax, alpha-beta pruning with heuristic evaluation |
 | **Interpretability** | Linear probes, CCS, PCA diagnostics, attention analysis, weight forensics |
 | **LLM APIs** | Claude API (Anthropic), GPT-4o (OpenAI), CodeLlama-7B (Meta) |
 | **RAG** | ChromaDB, sentence-transformers, cross-encoder re-ranking |
@@ -151,7 +151,7 @@ The JD lists 6 representative projects. Here is how the portfolio maps:
 | **Frontend** | React 18, Vite, Tailwind CSS, React Native/Expo |
 | **Backend** | FastAPI (async), Express 5, Flask, Lambda |
 | **AWS** | SageMaker, Step Functions, Lambda, API Gateway, EC2 (GPU), S3, SNS, SSM, CloudFormation, CloudWatch, IAM, and 6 more (17 total) |
-| **Testing** | pytest (205 tests), Vitest, moto (AWS mocks), strict mypy, bandit, pip-audit |
+| **Testing** | pytest (205 tests + 12 parametrized market sim tests), Vitest, moto (AWS mocks), strict mypy, bandit, pip-audit |
 | **CI/CD** | GitHub Actions (6-job parallel pipeline), pre-commit hooks |
 
 ---
@@ -173,3 +173,9 @@ The JD lists 6 representative projects. Here is how the portfolio maps:
 | Production AI features | 7 GPT-4o touchpoints, live users | cookbook-club |
 | API endpoints | 124+ REST endpoints | cookbook-club |
 | AWS services | 17 unique services across repos | all |
+| Game variants supported | 5 (TTT, Connect 4 Basic/Extended/Multiplayer/Hidden) | tic-tac-toeandconnectfour |
+| Search algorithms | Minimax (full tree) + alpha-beta (depth-limited) | tic-tac-toeandconnectfour |
+| Partial observability | Hidden Multiplayer with opponent token masking | tic-tac-toeandconnectfour |
+| Portfolio metrics | Sharpe ratio, cumulative return, avg/std daily return | Marketsim |
+| Automated test scenarios | 12 parametrized cases across 3 cost model groups | Marketsim |
+| Evaluation tolerance | 0.1% across all quantitative assertions | Marketsim |
