@@ -8,24 +8,29 @@ SUMMARY
 Research engineer building multi-agent RL systems, LLM finetuning
 pipelines, and model evaluation frameworks. Implemented 4 PPO agents
 for backdoor detection on a 671B-parameter model with residual stream
-probing across all transformer layers. Fine-tuned CodeLlama-7B via
-QLoRA with custom synthetic data generation, achieving 84/100 output
-quality. Built production LLM applications with Claude API and GPT-4o
-serving live users. 15 years of applied AI experience across Fortune
-500, federal, and personal research projects, with hands-on work
-spanning PyTorch RL, model interpretability, agent harness design,
-and quantitative benchmarking.
+probing across all transformer layers. Built game-playing agents with
+minimax and alpha-beta pruning across 5 variants including partial
+observability. Fine-tuned CodeLlama-7B via QLoRA with custom synthetic
+data generation, achieving 84/100 output quality. Built production LLM
+applications with Claude API and GPT-4o serving live users. 15 years
+of applied AI experience across Fortune 500, federal, and personal
+research projects, with hands-on work spanning PyTorch RL, adversarial
+search, model interpretability, agent harness design, and quantitative
+benchmarking.
 
 TECHNICAL SKILLS
 
-  Agent Systems & RL:       PPO (PyTorch), multi-agent coordination,
+  Agent Systems & Search:   PPO (PyTorch), multi-agent coordination,
                             adversarial hardening, agent harness
                             design, solver loop orchestration,
-                            convergence detection, state machines
+                            minimax, alpha-beta pruning, heuristic
+                            evaluation, convergence detection,
+                            state machines
 
   Model Training & Eval:    QLoRA/LoRA finetuning, SFTTrainer,
                             synthetic data generation, dataset mix
                             optimization, probe reliability scoring,
+                            pytest-parametrized evaluation frameworks,
                             A/B model comparison, adversarial testing
 
   LLM Integration:          Claude API, GPT-4o, prompt orchestration,
@@ -106,6 +111,36 @@ github.com/n8mauer/cookbook-club | Live: cookbookclub.vip
 - SHA-256 hash-keyed response caching in PostgreSQL with configurable
   TTLs; production TypeScript monolith with 124+ REST endpoints,
   dual auth (OAuth + JWT), React 18 frontend, React Native mobile
+
+Game-Playing Agent Framework — Adversarial Search & Multi-Agent AI
+github.com/n8mauer/tic-tac-toeandconnectfour
+- Implemented minimax (full game tree) for Tic-Tac-Toe and alpha-beta
+  pruning (depth-limited) for Connect 4, with depth-penalized scoring
+  to prefer faster wins — Tic-Tac-Toe agent achieves perfect play
+- Designed a heuristic evaluation function scoring board positions
+  across 4 directions with asymmetric threat weighting: +100 win,
+  +10 near-win, -80 opponent threat, +3 center control — enabling
+  strong play on variable-sized boards (up to 12x14)
+- Supported 5 game variants through polymorphic agent dispatch:
+  standard Tic-Tac-Toe, Connect 4 Basic/Extended/Multiplayer
+  (3 players), and Hidden Multiplayer with partial observability
+  where opponent tokens are masked — agent reasons under uncertainty
+- Built GameAgent vs RandomAgent benchmarking with GameStats tracking
+  win/loss/draw outcomes, timing, and move counts per variant
+
+Market Simulation — Quantitative Evaluation Framework
+github.com/n8mauer/Marketsim
+- Built a portfolio simulation engine processing time-ordered BUY/SELL
+  actions across multiple securities with transaction cost modeling
+  (fixed commission + percentage market impact) and forward/back-fill
+  for missing market dates
+- Computed 4 quantitative metrics (Sharpe ratio √252, cumulative
+  return, average daily return, std of daily returns) benchmarked
+  against SPY for relative performance assessment
+- Designed a pytest-parametrized automated grading framework (456
+  lines) with 12 namedtuple-defined test cases across 3 cost model
+  groups, tolerance-based assertions (0.1%), timeout enforcement, and
+  NaN detection — a pattern directly applicable to agent evaluation
 
 PROFESSIONAL EXPERIENCE
 
