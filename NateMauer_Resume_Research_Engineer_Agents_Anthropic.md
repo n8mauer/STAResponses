@@ -126,20 +126,29 @@ github.com/n8mauer/residualstreambackdoor
 - 10,400+ lines Python, 205 tests, strict mypy, 6-job CI/CD pipeline,
   LaTeX paper with TikZ diagrams
 
-Legacy Code Modernization — LLM Finetuning & Synthetic Data
+Federal Code Refactoring Pipeline — Agent-Orchestrated LLM Platform
 github.com/n8mauer/HiddenSignalTest
-- Fine-tuned CodeLlama-7B via QLoRA (4-bit NF4, LoRA r=64/a=16,
-  SFTTrainer, paged_adamw_32bit, BF16 mixed precision) achieving
-  84/100 output quality and 85-90% business logic accuracy
-- Built a 4,323-line synthetic dataset generator producing
-  instruction-tuning data across 8 weighted categories with SHA-256
-  deduplication; dataset sizing analysis identified 10K examples as
-  optimal for ~1,000-2,000 unique patterns
-- Deployed via SageMaker Serverless Inference and HuggingFace
-  Inference Endpoints for A/B hosting comparison; Step Functions
-  orchestration (GenerateDataset > TrainModel > DeployModel)
-- Terraform IaC with cost optimization: spot training, budget alerts,
-  idle auto-termination; GovCloud deployment path for FedRAMP
+- 3-person team coded and sold a code refactoring pipeline to the
+  Federal government, processing 2M+ lines of legacy mainframe code
+  (COBOL/Assembly) through a 200K token context window into production
+  Python — fine-tuned CodeLlama-7B via QLoRA achieving 84/100 output
+  quality, 85-90% business logic accuracy, and 6,435 lines generated
+- Step Functions sense-plan-act agent harness: the training lifecycle
+  (GenerateDataset > TrainModel > DeployModel) senses current state
+  (checkpoint status, spot instance availability), plans conditional
+  deployment decisions, and acts with checkpoint recovery for spot
+  interruptions — the same autonomous loop governing long-horizon agents
+- Intelligent document chunking agents: metadata extraction > section
+  detection (numbered requirements, headers, markdown structure) >
+  context-preserving overlap splits > MD5-cached per-chunk processing >
+  coherent result merging — processing 2M+ LOC through 200K token window
+- Multi-run seed curriculum strategy: 5 seeded runs (seeds 42-46) x
+  10K examples = 50K training examples with weighted category mixing
+  across 8 domains — data mix optimization maximizing pattern diversity
+  with different parameter variations and UUID values per seed
+- Dual deployment (SageMaker Serverless + HuggingFace Endpoints) +
+  Terraform cost optimization (spot training 90% savings, budget alerts,
+  idle auto-termination) + GovCloud/FedRAMP compliance
 
 RAG Study Assistant — Agent Orchestration & Context Management
 github.com/n8mauer/studyassistant
