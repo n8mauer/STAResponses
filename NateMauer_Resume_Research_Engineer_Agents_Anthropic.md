@@ -5,39 +5,40 @@ LI: www.linkedin.com/in/natemauer | Top Secret Clearance
 
 SUMMARY
 
-Research engineer building multi-agent RL systems, LLM finetuning
-pipelines, and model evaluation frameworks. Implemented 4 PPO agents
-for backdoor detection on a 671B-parameter model with residual stream
-probing across all transformer layers. Built game-playing agents with
-minimax and alpha-beta pruning across 5 variants including partial
-observability. Fine-tuned CodeLlama-7B via QLoRA with custom synthetic
-data generation, achieving 84/100 output quality. Built production LLM
-applications with Claude API and GPT-4o serving live users. 15 years
-of applied AI experience across Fortune 500, federal, and personal
-research projects, with hands-on work spanning PyTorch RL, adversarial
-search, model interpretability, agent harness design, and quantitative
+Research engineer building multi-agent RL systems, agent evaluation
+environments, and LLM finetuning pipelines. Built two OpenEnv-compliant
+agent environments — a multi-agent negotiation simulation with MCTS
+planning, CART behavioral probes, and Claude tool-use integration, and
+a long-horizon HR simulation with GRPO RL training and 150-200+ step
+episodes. Implemented 4 PPO agents for backdoor detection on a
+671B-parameter model with residual stream probing. Fine-tuned
+CodeLlama-7B via QLoRA achieving 84/100 output quality. Built
+production LLM applications with Claude API and GPT-4o serving live
+users. 15 years of applied AI experience spanning PyTorch RL, MCTS,
+agent harness design, model interpretability, and quantitative
 benchmarking.
 
 TECHNICAL SKILLS
 
-  Agent Systems & Search:   PPO (PyTorch), multi-agent coordination,
-                            adversarial hardening, agent harness
-                            design, solver loop orchestration,
-                            minimax, alpha-beta pruning, heuristic
-                            evaluation, convergence detection,
-                            state machines
+  Agent Systems & Search:   PPO (PyTorch), MCTS (UCB1), GRPO (TRL),
+                            multi-agent coordination, adversarial
+                            hardening, agent harness design, solver
+                            loop orchestration, minimax, alpha-beta
+                            pruning, OpenEnv environments, convergence
+                            detection, phase-gated state machines
 
-  Model Training & Eval:    QLoRA/LoRA finetuning, SFTTrainer,
-                            synthetic data generation, dataset mix
-                            optimization, probe reliability scoring,
-                            pytest-parametrized evaluation frameworks,
-                            A/B model comparison, adversarial testing
+  Model Training & Eval:    QLoRA/LoRA finetuning (Unsloth, SFTTrainer),
+                            GRPO reward function design, synthetic data
+                            generation, dataset mix optimization, probe
+                            reliability scoring, CART behavioral probes,
+                            pytest-parametrized evaluation frameworks
 
-  LLM Integration:          Claude API, GPT-4o, prompt orchestration,
+  LLM Integration:          Claude API (chat + tool-use), GPT-4o,
+                            Anthropic SDK, prompt orchestration,
                             structured output validation, RAG
                             (ChromaDB, sentence-transformers,
                             cross-encoder re-ranking), context
-                            compression, token budget management
+                            compression, experience replay buffers
 
   Model Interpretability:   Residual stream probing, linear probes
                             (L1/L2/CART), CCS unsupervised labeling,
@@ -45,11 +46,61 @@ TECHNICAL SKILLS
                             divergence analysis, weight forensics
 
   Infrastructure:           Python, PyTorch, scikit-learn, HuggingFace,
-                            FastAPI, AWS (SageMaker, Lambda, Step
-                            Functions, EC2 GPU, CloudFormation),
+                            FastAPI, Pydantic, OpenEnv, AWS (SageMaker,
+                            Lambda, Step Functions, EC2 GPU),
                             Terraform, Docker, GitHub Actions CI/CD
 
 PROJECTS
+
+Multi-Agent Negotiation Environment — OpenEnv Hackathon SF (Meta/HF)
+github.com/n8mauer/OpenEnv_Hackathon
+- Built Nexus, a multi-agent compute cluster negotiation simulation
+  where 2-8 agents trade scarce resources (GPU/CPU/memory/bandwidth),
+  form coalitions, and complete jobs under deadlines — with a 7-phase
+  round loop (Event > Observe > Negotiate > Action > Execute > Score >
+  Oversight) and partial observability via natural language rendering
+- Implemented Monte Carlo Tree Search (MCTS) with UCB1 selection for
+  strategic negotiation planning under hidden information — agents
+  simulate opponent responses to find optimal bid/offer/coalition moves
+- Designed Mixture-of-Experts (MoE) voting for coalition resource
+  allocation: confidence-weighted member voting with proposer bonus,
+  elimination pre-pass, and validation against job requirements
+- Built CART behavioral probes (RandomForest, 20 trees) for real-time
+  anomaly detection: 8-dim feature vectors (trade frequency, price
+  deviation, hoarding ratio, coalition frequency, resource asymmetry,
+  message volume, deadline miss rate, budget velocity) with pair-wise
+  collusion detection for off-market trades
+- Integrated Claude via Anthropic tool-use SDK with 8 structured tools,
+  experience replay buffer (best-N + recent-N memory injection), and
+  behavioral policy adaptation with learning rate decay (0.995x)
+- 7 agent types: Random, Greedy, Strategic/MCTS, LLM/Claude,
+  Supervisor, CTO, Worker; market physics with price impact and
+  commission; Sharpe ratio + Gini coefficient fairness metrics
+- 4,255 lines Python + 795 lines pytest across 6 test modules
+
+Long-Horizon Agent Evaluation — OpenEnv RL Environment
+github.com/n8mauer/HCM-21
+- Built HCM:21, an OpenEnv-compliant simulation where AI agents manage
+  200-500 employees across 5 departments over 6 quarters (150-200+
+  steps) with sparse delayed rewards — decisions in Q1 show ROI in Q3+
+- Designed a 4-phase state machine (Scan > Plan > Produce > Control)
+  gating 16 action types with minimum action enforcement per phase —
+  agents cannot skip strategic steps (no hiring without planning)
+- Implemented Cobb-Douglas production functions per department with
+  logistic flight risk modeling, 8 stochastic event types with
+  cross-quarter cascading, and Fitz-enz HR metrics (HCVA, HCROI, QIPS,
+  Five Indexes of Change, Employee Value)
+- Built a 6-component scoring system calibrated across agent baselines:
+  Random 0.15-0.25, Heuristic 0.50-0.65, Strong LLM agent 0.70+ —
+  combining HCVA trajectory trend, HCROI improvement, QIPS consistency,
+  employee value, five indexes, and financial health
+- Trained agents via GRPO (TRL + Unsloth) on Qwen3-0.6B with LoRA
+  rank=16, 4-bit quantization — custom reward function executes full
+  episodes in environment, returns terminal score as RL signal
+- Claude-based agent with phase-aware prompting, quarterly LLM-generated
+  memory compression (500 tokens per quarter), and rolling context
+  window management for 100K+ token episode histories
+- 2,478 lines Python + 400 lines pytest; deployed on HuggingFace Spaces
 
 LLM Backdoor Detection — Multi-Agent RL & Interpretability
 github.com/n8mauer/residualstreambackdoor
