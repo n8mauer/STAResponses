@@ -2,7 +2,7 @@
 
 ---
 
-Thank you for the opportunity. I'm an AI/ML engineering leader who builds and ships enterprise AI platforms — from LLM finetuning and synthetic data pipelines to production applications serving live users, all backed by infrastructure-as-code, CI/CD pipelines, and cost-optimized cloud architectures. I've spent 15+ years leading teams, delivering AI systems for Federal clients in highly regulated environments, and translating complex technical capabilities into business outcomes for executive stakeholders.
+Thank you for the opportunity. i believe that the purpse of softawer engineering is to control complexity, not create it.I'm an AI/ML engineering leader who builds and ships enterprise AI platforms — from LLM finetuning and synthetic data pipelines to production applications serving live users, all backed by infrastructure-as-code, CI/CD pipelines, and cost-optimized cloud architectures. I've spent 15+ years leading teams, delivering AI systems for Federal clients in highly regulated environments, and translating complex technical capabilities into business outcomes for executive stakeholders.
 
 What I bring to this role is end-to-end program delivery across the full AI stack — not just prototypes, but production systems with security, compliance, and operational rigor built in from day one.
 
@@ -23,3 +23,4 @@ What ties all of this together is how I think about AI development at the direct
 At Booz Allen Hamilton, I've led cross-functional AI engineering teams, facilitated training programs on PyTorch, HuggingFace, and MLOps tooling, and delivered a 90% improvement in delivery timelines through production generative AI applications. Before that, I founded and led a B2B platform company (America's Future Workforce) for 6 years, and I applied AI/ML in the White House under President Obama — automating classification for 200+ daily communications and clearing a 20,000+ letter backlog. I hold a Top Secret clearance, I'm completing my M.S. in Computer Science (Machine Learning) at Georgia Tech, and I have post-graduate certificates from UC Berkeley (AI/ML) and Oxford (Algorithmic Trading).
 
 I'm comfortable at every layer — LLM finetuning, PyTorch model internals, cloud infrastructure provisioning, API design, frontend delivery, team leadership — and I'm effective at translating between them for technical and business audiences alike. I'd welcome the opportunity to discuss how my experience building and shipping enterprise AI platforms maps to what the Tax Ignition team is building.
+
