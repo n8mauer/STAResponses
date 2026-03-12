@@ -1,6 +1,7 @@
 # BCG Platinion — Principal Architect, AI Platforms
 ## Portfolio Evidence: Technical Summary
 
+Thank you for the opportunity. I'm a research engineer who builds multi-agent systems, agent evaluation environments, and LLM training pipelines — from RL reward functions to production infrastructure. I don't just design systems on whiteboards; I ship them.
 ---
 
 Four repositories demonstrate end-to-end coverage of the Principal Architect – AI Platforms competency model. The work spans the full AI system lifecycle: model training and fine-tuning, inference architecture, RAG pipeline design, agentic orchestration, cloud-native deployment, and production operation — implemented in Python, TypeScript, and IaC (Terraform/CloudFormation) across 17 AWS services.
@@ -42,3 +43,4 @@ CI/CD enforced via GitHub Actions (6-job parallel pipeline: ruff, mypy strict, b
 | Full-stack delivery | Production React + TypeScript apps, dual auth, real-time WebSocket, mobile |
 | Technical communication | 400KB+ documentation, LaTeX paper, demo guides with talk tracks, architecture decision records |
 | Business value | 1000x cost reduction (HiddenSignalTest), live production platform (cookbook-club), <4s latency (studyassistant) |
+
